@@ -1,4 +1,4 @@
 kristiankim.com
 ===============
 
-This is my personal website, version 2.
+Project nitialized on Apr 19, 2014
