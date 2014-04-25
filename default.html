@@ -1,0 +1,64 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta name="description" content="{{ site.meta.description }}">
+  <meta name="keywords" content="{{ site.meta.keywords }}">
+  <meta property="twitter:account_id" content="{{ site.meta.twitter }}">
+  <title>{{site.title}} | {{title}}</title>
+  <link rel="alternate" type="application/rss+xml" href="{{site.feed_url}}" />
+    
+  <!-- // CSS Reset – http://meyerweb.com/eric/tools/css/reset/ -->
+  <link rel="stylesheet" type="text/css" href="css/reset.css" media="all">
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+    
+  <script>
+    (function() {
+        var config = {
+            kitId: '{{ site.meta.typekit_id }}',
+            scriptTimeout: 3000
+        };
+    })();
+  </script>
+</head>
+    
+<body>
+    <div class="wrapper">
+        <header>
+      
+             <div class="site-title"><a href="/">{{site.title}}</a></div>
+      
+              <nav>
+                  <ul>
+                  {% for page in site.pages %}
+                  <li><a href="{{page.url}}"{% if page.url == url %} class="selected"{% endif %}>{{page.title}}</a></li>
+                  {% endfor %}
+                  </ul>
+               </nav>
+      
+        </header>
+        
+        <article>
+            <h1> This is article title.</h1>
+            <h5> apr 14, 2014</h5>
+        <p class="intro">One of the iconic representations of the digital age is an image of the ubiquitous digital screen, stereotypically represented as a grid of brightly-lit pixels.</p>
+      <p>This, like many of our other traditional perceptions of digital and interactive experiences, are either changing or being replaced altogether as we enter the post-PC era. New devices have such high resolution displays that individual pixels become imperceptibly small. Other devices, like the Amazon Kindle, eschew pixels altogether â opting to use electronic ink.<br/></p>
+      <p class="pullquote">These new devices are radically transforming what is possible in digital visual design and this has radical implications for digital typography. </p>
+      <p>The death of the pixel leaves you with a flowing, magazine-quality canvas to design for. A canvas where curves are curves, not ugly pixel approximations of curves. A canvas that begins to blur the line between what we consider to be real and what we consider to be virtual.</p>
+      <p>It wasn't too long ago that there was one set of rules for use of type on print and use of type on screen. Now that we have screens that are essentially print quality, we have to reevaluate these conventions.</p>
+      <p> Web sites are transforming from boring fields of Arial to embrace the gamut of typographical possibilities offered by web fonts. Web fonts, combined with the style and layout options presented by the creative use of CSS and JavaScript offer a new world of typographic opportunity on the web. </p>
+        </article>
+     
+        <footer>This is footer.</footer>
+   </div>
+    
+</body>
+    
+</html>

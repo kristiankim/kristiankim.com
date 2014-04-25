@@ -1,0 +1,235 @@
+/*  Apply a natural box layout model to all elements  */ 
+*, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+html {}
+body {
+	 font-size: 112.5%;
+	 font-family: "adelle", serif;
+	 font-weight: 400;
+	 line-height: 1.5em;
+}
+
+/*   Typography   */
+
+h1 {
+	 font-family: "adelle-sans", sans-serif;
+	 font-size: 2.78em;
+	 line-height: 1.2em;
+	 font-weight: 700;
+	 font-style: normal;
+	 width: 100%;
+	 text-align: center;
+}
+
+p.intro {
+	 font-family: "adelle", serif;
+	 margin-bottom: 27px;
+	 font-size: 1.333em;
+	 border-top: 1px;
+	 border-bottom: 1px;
+	 padding: 30px;
+	 text-align: center;
+	 border-style: solid;
+	 margin-top: 27px;
+	 line-height: 1.5em;
+	 font-weight: 400;
+	 font-style: normal;
+	 color: rgba(155, 155, 155, 1);
+	 width: 91.311%;
+}
+
+p {
+	 font-size: 1em;
+	 line-height: 1.5em;
+	 color: rgba(34, 34, 34, 1);
+	 width: 100%;
+	 margin: 0px 0px 1.5em 0px;
+}
+
+h2 {
+	 font-size: 1.5em;
+	 font-family: "adelle-sans", sans-serif;
+	 line-height: 1em;
+	 font-weight: 400;
+	 font-style: normal;
+	 margin: 0px 0px 1em 0px;
+}
+
+p.pullquote {
+	 border-style: solid;
+	 color: rgba(155, 155, 155, 1);
+	 font-family: "adelle";
+	 font-weight: 400;
+	 font-style: italic;
+	 padding: 0px 0px 0px 20px;
+	 border-color: rgba(18, 153, 232, 1);
+	 border-width: 0px 0px 0px 5px;
+	 width: 96.397%;
+	 font-size: 1em;
+	 line-height: 1.5em;
+}
+
+p.author {
+	 text-align: center;
+	 font-size: 13px;
+	 letter-spacing: 2px;
+	 margin-top: 27px;
+}
+
+h5 {
+	 font-size: 0.778em;
+	 margin: 20px 0px 10px 0px;
+	 font-family: "adelle-sans", sans-serif;
+	 font-weight: 700;
+	 font-style: normal;
+	 color: rgba(155, 155, 155, 1);
+	 text-transform: uppercase;
+	 letter-spacing: 1px;
+	 text-align: center;
+	 width: 100.147%;
+	 line-height: 1.5em;
+}
+
+span.dropcap {
+	 float: left;
+	 color: #333333;
+	 font-size: 5.278em;
+	 line-height: 0.632em;
+	 padding-top: 12px;
+	 padding-right: 12px;
+	 padding-left: 3px;
+	 font-family: "adelle";
+	 font-weight: 700;
+	 font-style: normal;
+}
+
+article ul {
+	 margin: 0.556em 1.111em 1.5em 1.111em;
+	 padding: 10px 20px;
+	 font-size: 1em;
+	 line-height: 1.6em;
+}
+
+article li {
+	 font-size: 1em;
+	 line-height: 1.6em;
+}
+
+img {
+	 max-width: 100%;
+	 width: 99.854%;
+	 margin: 0px 0px 1.5em 0px;
+}
+
+a a {
+	 color: inherit;
+}
+
+a {
+	 color: rgba(25, 185, 255, 1);
+}
+
+div.left-head:before {
+	 content: "";
+	 display: table;
+}
+
+div.left-head:after {
+	 content: "";
+	 display: table;
+	 clear: both;
+}
+
+div.left-head {
+	 width: auto;
+	 margin: 0;
+}
+
+h1.left-head-h1 {
+	 float: left;
+	 width: 40%;
+	 margin-right: 10%;
+	 font-size: 2.5em;
+	 line-height: 1.2em;
+}
+
+div.pull-quote-p:before {
+	 content: "";
+	 display: table;
+}
+
+div.pull-quote-p:after {
+	 content: "";
+	 display: table;
+	 clear: both;
+}
+
+div.pull-quote-p {
+	 width: auto;
+	 margin: 0;
+}
+
+/*   Layout Style   */
+
+article, header, nav, section {
+    display: block;
+}
+
+wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    background-color: #19B9FF;
+    height: 80px;
+}
+
+header .site-title a {
+    float: left;
+    font-family: adelle;
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px;
+}
+
+nav {
+    float: right;
+    display: inline;
+}
+
+nav ui {
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav li a {
+    font-family: "adelle-sans";
+    font-size: 16px;
+    color: #fff;
+    margin-left: 30px;
+}
+
+article {
+	 margin: 0 auto;
+	 max-width: 37.78em;
+	 font-size: 1em;
+	 line-height: 1.507em;
+     padding: 0 1em;
+}
+
+footer {
+    width: 100%;
+    height: 80px;
+    background-color: #646464;
+}
+
+img {
+	 max-width: 100%;
+	 width: 100%;
+	 margin: 0px 0px 1.5em 0px;
+}
