@@ -31,17 +31,20 @@
     
 <body>
     <div class="wrapper">
-        <header>
-      
+        <header class="universal" role="banner">
+           <div class="contain">
              <div class="site-title"><a href="/">{{site.title}}</a></div>
       
               <nav>
                   <ul>
-                  {% for page in site.pages %}
+                  {% for page in site.pages %}  
+                    {% unless page.url == "/" %}
                   <li><a href="{{page.url}}"{% if page.url == url %} class="selected"{% endif %}>{{page.title}}</a></li>
+                    {% endunless %}
                   {% endfor %}
                   </ul>
                </nav>
+            </div>
       
         </header>
         
@@ -56,7 +59,9 @@
       <p> Web sites are transforming from boring fields of Arial to embrace the gamut of typographical possibilities offered by web fonts. Web fonts, combined with the style and layout options presented by the creative use of CSS and JavaScript offer a new world of typographic opportunity on the web. </p>
         </article>
      
-        <footer>This is footer.</footer>
+        <footer class="universal">
+            <div class="contain"><span class="copyright">© 2014 Kristian Kim</span></div>
+        </footer>
    </div>
     
 </body>
