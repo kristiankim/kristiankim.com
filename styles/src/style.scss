@@ -1,0 +1,200 @@
+@import "bourbon", "neat";
+@import 'font';
+@import 'colors';
+@import 'flex-grid';
+
+/* Mixins ----------------------*/
+
+@mixin container {
+    width:100%;
+    height: em(80);
+    @include padding(1.5em 1em);
+}
+
+@mixin fullwidth {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* General ----------------------*/
+
+body {
+    font-family: $base-font;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    font-style: normal;
+}
+
+article, header, nav, section {
+    @include row(table);
+    // Context changed to table display
+}
+
+a {
+    text-decoration: none;
+    color: $blue;
+}
+
+@include reset-display;
+
+$max-width: em(960);
+
+.fullwidth {
+    @include fullwidth;
+}
+    
+/* Headers. Modular Scale ---------------------- 18px @ 1:1.5	  ----------------------*/
+
+h1, h2, h3, h4 {
+    font-family: $header;
+}
+
+h5 {
+    font-family: $base-font;
+}
+
+h1 {
+    font-size: golden-ratio(1em, 2);
+    text-align: center;
+    font-weight: 700;
+    font-style: normal;
+}
+
+h2 {
+    font-size: golden-ratio(1em, 1);
+    color: $black;
+    @include margin(null null 1em null);
+    
+    a {color: $grey; line-height: 1.5em; font-weight:700;}
+}
+
+h5 {
+    font-size: 0.722em;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 1.5em;
+    text-transform: uppercase;
+    color: $grey;
+}
+
+h1.section-title {
+    max-width:7em;
+    text-align: center;
+    @include margin(null auto);
+    font-size: 1.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 3px solid $blue;
+}
+
+/* Header ----------------------*/
+
+header.universal {
+    @include container;
+    /*background-color: $blue;*/  /* -- Use Meta Color */
+}
+
+.contain {
+    @include outer-container;
+}
+
+.site-title {
+    float: left;
+    font-family: $header;
+    font-weight: 700;
+    font-size: $base-font-size;
+    display: inline;
+}
+
+.site-title a {
+    color: $white;
+}   
+
+nav.universal {
+    font-family: $header;
+    font-size: $base-font-size;
+    display: inline;
+}
+
+nav.universal {
+    ul {list-style: none; float: right;
+        li {@include inline-block;
+            a {font-family: $header; font-size: 16px; color:$white; margin-left:30px;}
+        }
+    }
+}
+
+/* Article ----------------------*/
+
+article {
+    @include outer-container;
+    max-width: em(680);
+    @include margin(3em auto);
+    @include padding(null 2em);
+    
+    p {@include margin(null null 1.5em null); @include hyphens(manual);}
+    p.view {font-family: $header; font-size: 0.6em; line-height: 1em;}
+    p.view a {color: $orange; text-transform: uppercase; letter-spacing: 1px;}
+
+    img {max-width: 100%; @include margin(0.6em null);}
+}
+
+p.caption {
+    font-family: $base-font;
+    font-size: 0.8em;
+    font-style: italic;
+    color: $grey;
+}
+
+/* Hero ----------------------*/
+
+.hero {
+    width: 100%;
+    height: 30em;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 3em;
+    
+    #iam {
+    @include outer-container;
+    @include clearfix;
+    @include padding(10em 1em null 1em);}
+
+    #iam p {
+    font-size: 1.889em;
+    color: $black;
+    line-height: 1.5;
+    text-align: center;}
+}
+
+/* Footer ----------------------*/
+
+footer.universal {
+    @include container;
+    background-color: $light-grey;
+    
+    p {font-family: $header; color: $grey; font-size: 14px; padding-top: 8px;}
+    p.copyright {float: left; display: inline; width:20em;}
+    p.status {float: right; text-align: right; display:inline; width:14.7222223em;}
+}
+
+/* Tags List ----------------------*/
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
+.list_horizontal {
+    overflow: hidden;
+    @include margin(1em null);
+    
+    li {@include inline-block; float: left; margin-right: 8px;}
+    li a {color: $light-grey;}
+    li a:hover {color: $grey;}
+}

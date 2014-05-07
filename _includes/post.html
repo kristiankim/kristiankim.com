@@ -1,9 +1,38 @@
+    {% for asset in assets %}
+    {% if asset.meta.type == 'hero' %}
+    <img class="fullwidth" src="{{asset.url}}">
+    {% elsif asset.meta.type == 'vhero' %}
+    <video class="fullwidth"><source src="{{asset.url}}" type="{{asset.content_type}}"></video>
+    {% elsif asset.type == 'other' %}
+    <a href="{{asset.url}}">Download {{asset.filename}}</a></li>
+    {% endif %}
+    {% endfor %}
+
 <article>
 <h1>{{ title }}</h1>
-<h5>Date</h5>
+<h5>{{post.date | date: "%b %d, %Y"}}</h5>
+    
+    {% for asset in assets %}
+    {% if asset.meta.type == 'mainimage' %}
+    <img src="{{asset.url}}"><p class="caption">{{asset.meta.caption}}</p>
+    {% elsif asset.type == 'audio' %}
+    <audio><source src="{{asset.url}}" type="{{asset.content_type}}"></audio><p class="caption">{{asset.meta.caption}}</p>
+    {% elsif asset.type == 'video' %}
+    <video><source src="{{asset.url}}" type="{{asset.content_type}}"></video><p class="caption">{{asset.meta.caption}}</p>
+    {% elsif asset.type == 'other' %}
+    <a href="{{asset.url}}">Download {{asset.filename}}</a></li>
+    {% endif %}
+    {% endfor %}
+
 {{ body }}
-    <p>Test Test</p>
+
+<ul class="tags list_horizontal">
+{% for tag in taxonomy['tags'] %}
+  <li><a href="{{tag.url}}">{{tag.value}}</a></li>
+{% endfor %}
+</ul>
+    
 {% if parent %}
-  <a href="{{parent.url}}">&larr; Back to {{parent.title}}</a>
+  <a class="backto" href="{{parent.url}}">&larr; Back to {{parent.title}}</a>
 {% endif %}
 </article>

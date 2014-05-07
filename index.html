@@ -1,0 +1,33 @@
+{% capture content %}
+
+<section class="hero main" style="background-image: url('/assets/ocean_bg.jpg')">
+<div id="iam">
+{{ body }}
+</div>
+</section>
+
+<section class="contain">
+<h1 class="section-title">Latest Work</h1>
+{% for post in site.pages['work'].posts limit:2 %}
+<article>
+   {% for asset in post.assets %}{% endfor %}
+   <h2><a href="{{post.url}}">{{post.title}}</a></h2>
+   {{post.body | truncatewords: 50}}
+   <p class="view"><a href="{{post.url}}">View work</a>
+</article>
+{% endfor %}
+
+<h1 class="section-title">Thoughts</h1>
+{% for post in site.pages['thoughts'].posts limit.2 %}
+<article>
+    {% for asset in posts.assets %}{% endfor %}
+    <h2><a href="{{post.url}}">{{post.title}}</a></h2>
+    {{post.body | truncatewords: 50}}
+    <p class="view"><a href="{{post.url}}">View Article</a>
+</article>
+{% endfor %}
+</section>
+
+{% endcapture %}
+
+{% include 'layouts/default' %}

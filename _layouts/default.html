@@ -16,15 +16,14 @@
   <link rel="alternate" type="application/rss+xml" href="{{site.feed_url}}" />
     
   <!-- // CSS Reset – http://meyerweb.com/eric/tools/css/reset/ -->
-  <link rel="stylesheet" type="text/css" href="/css/reset.css" media="all">
-  <link rel="stylesheet" type="text/css" href="/css/style.css" media="all">
-
+  <link rel="stylesheet" type="text/css" href="/styles/reset.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/styles/style.css" media="all">
   {% include 'includes/typekit' %}
 
 </head>
     
 <body>
-      <header class="universal" role="banner">
+      <header class="universal" role="banner" style="background-color: {{ meta.color | fallback: '#19B9FF' }};">
            <div class="wrapper">
            <div class="contain">
              <div class="site-title"><a href="/">{{site.title}}</a></div>
