@@ -25,6 +25,12 @@ body {
     font-style: normal;
 }
 
+@include media(min-width 320px max-width 480px) {
+    body {
+        font-size: 100%;
+    }
+}
+
 article, header, nav, section {
     @include row(table);
     // Context changed to table display
@@ -33,6 +39,11 @@ article, header, nav, section {
 a {
     text-decoration: none;
     color: $blue;
+    @include transition (all 0.3s ease-in-out);
+    
+    &:hover {
+        color: darken($blue, 20%);}
+        
 }
 
 @include reset-display;
@@ -58,6 +69,10 @@ h1 {
     text-align: center;
     font-weight: 700;
     font-style: normal;
+    
+    @include media(min-width 320px max-width 480px) {
+        font-size: golden-ratio(1em, 1);
+    }
 }
 
 h2 {
@@ -65,7 +80,9 @@ h2 {
     color: $black;
     @include margin(null null 1em null);
     
-    a {color: $grey; line-height: 1.5em; font-weight:700;}
+    a {color: $grey; line-height: 1.5em; font-weight:700;
+     &:hover {color: darken($grey, 20%);}
+    }
 }
 
 h5 {
@@ -107,21 +124,47 @@ header.universal {
 
 .site-title a {
     color: $white;
+    -webkit-font-smoothing: antialiased;
 }   
 
 nav.universal {
     font-family: $header;
     font-size: $base-font-size;
     display: inline;
-}
-
-nav.universal {
+    
     ul {list-style: none; float: right;
         li {@include inline-block;
-            a {font-family: $header; font-size: 16px; color:$white; margin-left:30px;}
+            a {font-family: $header; font-size: 16px; color: lighten($blue, 35%); margin-left:30px; -webkit-font-smoothing: antialiased;
+              &:hover { color: $white;}
+              &.selected {color: $white;}
+            }
         }
     }
 }
+    
+@include media(min-width 320px max-width 480px) {
+    .site-title {display: block;}
+    
+    .naver {
+       .naver-handle {cursor: pointer; display: none; @include prefixer(user-select, none, webkit moz ms o spec);
+ 	   &:before { background: url(../assets/menu.svg) no-repeat center; content: ''; display: inline-block; float: right; height: 15px; margin-top: 7px; width: 20px; }
+    }
+ 	  .naver-wrapper { height: auto; }
+      .naver-container {margin-top: 8px;
+ 	     &:after { clear: both; content: "."; display: block; height: 0; line-height: 0; visibility: hidden;}
+      }
+
+	  &.enabled .naver-handle { display:block; }
+	  &.enabled .naver-wrapper { height: 0px; overflow: hidden; clear: both;}
+    }
+    
+    nav.universal ul {float: none;
+        li {display: block; width: 100%;
+            a {margin-left:0;}
+        }
+     }
+}
+            
 
 /* Article ----------------------*/
 
@@ -136,6 +179,10 @@ article {
     p.view a {color: $orange; text-transform: uppercase; letter-spacing: 1px;}
 
     img {max-width: 100%; @include margin(0.6em null);}
+    
+    @include media(min-width 320px max-width 480px) {
+        @include padding(null 1em);
+    }
 }
 
 p.caption {
@@ -143,6 +190,11 @@ p.caption {
     font-size: 0.8em;
     font-style: italic;
     color: $grey;
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px solid $light-grey;
 }
 
 /* Hero ----------------------*/
@@ -157,14 +209,26 @@ p.caption {
     #iam {
     @include outer-container;
     @include clearfix;
-    @include padding(10em 1em null 1em);}
+    @include padding(10em 1em null 1em);
 
-    #iam p {
+    p {
     font-size: 1.889em;
     color: $black;
     line-height: 1.5;
     text-align: center;}
+    }
 }
+
+@include media(min-width 320px max-width 480px) {
+    .hero {
+        height: 22em;
+        
+        #iam {@include padding(6em 1em null 1em);
+            p {font-size: 1.3em;}
+        }
+    }
+}
+
 
 /* Footer ----------------------*/
 
@@ -175,6 +239,15 @@ footer.universal {
     p {font-family: $header; color: $grey; font-size: 14px; padding-top: 8px;}
     p.copyright {float: left; display: inline; width:20em;}
     p.status {float: right; text-align: right; display:inline; width:14.7222223em;}
+    
+    @include media(min-width 320px max-width 480px) {
+        height: 7em;
+        p {
+            padding-top:0;
+            &.copyright, &.status {float: none; text-align: center; display: block; width: 100%; @include padding(6px null);}
+            &.status .pre {display: none;}        
+        }
+    }
 }
 
 /* Tags List ----------------------*/
@@ -195,6 +268,7 @@ li {
     @include margin(1em null);
     
     li {@include inline-block; float: left; margin-right: 8px;}
-    li a {color: $light-grey;}
-    li a:hover {color: $grey;}
+    li a {color: lighten($grey, 20%);
+       &:hover {color: $grey;}
+    }
 }

@@ -18,17 +18,18 @@
   <!-- // CSS Reset – http://meyerweb.com/eric/tools/css/reset/ -->
   <link rel="stylesheet" type="text/css" href="/styles/reset.css" media="all">
   <link rel="stylesheet" type="text/css" href="/styles/style.css" media="all">
+
   {% include 'includes/typekit' %}
 
 </head>
     
 <body>
-      <header class="universal" role="banner" style="background-color: {{ meta.color | fallback: '#19B9FF' }};">
+      <header role="banner" class="universal" role="banner" style="background-color: {{ meta.color | fallback: '#19B9FF' }};">
            <div class="wrapper">
            <div class="contain">
              <div class="site-title"><a href="/">{{site.title}}</a></div>
       
-              <nav class="universal">
+              <nav class="universal" id="menu">
                   <ul>
                   {% for page in site.pages %}  
                     {% unless page.url == "/" %}
@@ -49,8 +50,16 @@
      
         <footer class="universal">
             <div class="contain"><p class="copyright">&copy; {{ site.date | date: '%Y' }} Kristian Kim. All Rights Reserved</p>
-            <p class="status">My current status [happy]</p></div>
+            <p class="status"><span class="pre">My current status </span>[happy]</p></div>
         </footer>
+    
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.fs.naver.js"></script>
+    <script>
+    $("nav").naver({
+	maxWidth: "480px"
+    });
+    </script>
     
 </body>
     
