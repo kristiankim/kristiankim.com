@@ -255,11 +255,11 @@ hr {
   .hero {
     height: 22em; }
     .hero #iam {
-      padding-top: 6em;
+      padding-top: 5em;
       padding-right: 1em;
       padding-left: 1em; }
       .hero #iam p {
-        font-size: 1.3em; } }
+        font-size: 1.618em; } }
 /* Footer ----------------------*/
 footer.universal {
   width: 100%;
@@ -321,3 +321,14 @@ li {
     color: #cecece; }
     .list_horizontal li a:hover {
       color: #9b9b9b; }
+
+/* Tag Page ----------------------*/
+.tag-title {
+  font-size: 1.5em;
+  padding: 1em;
+  background-color: #e6e6e6; }
+  .tag-title .tag-icon {
+    background: url(../assets/tag.svg) no-repeat center;
+    background-size: contain;
+    margin-right: 1em;
+    color: transparent; }

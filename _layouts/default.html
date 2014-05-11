@@ -18,7 +18,9 @@
   <!-- // CSS Reset – http://meyerweb.com/eric/tools/css/reset/ -->
   <link rel="stylesheet" type="text/css" href="/styles/reset.css" media="all">
   <link rel="stylesheet" type="text/css" href="/styles/style.css" media="all">
-
+  <style>
+    ::selection {background-color: {{ meta.color | fallback: '#19B9FF' }}; color: #fff;}
+  </style>
   {% include 'includes/typekit' %}
 
 </head>
@@ -54,12 +56,9 @@
         </footer>
     
     <script src="/js/jquery.js"></script>
-    <script src="/js/jquery.fs.naver.js"></script>
-    <script>
-    $("nav").naver({
-	maxWidth: "480px"
-    });
-    </script>
+    {% include 'includes/fitvids' %}
+    {% include 'includes/naver' %}
+    
     
 </body>
     

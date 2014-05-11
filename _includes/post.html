@@ -7,8 +7,15 @@
     <a href="{{asset.url}}">Download {{asset.filename}}</a></li>
     {% endif %}
     {% endfor %}
+    
+    {% if meta.vhero %}
+    <div class="fullwidth">{{meta.vhero}}</div>
+    {% elsif meta.hero %}
+    <div class="fullwidth">{{meta.hero}}</div>
+    {% endif %}
 
 <article>
+    
 <h1>{{ title }}</h1>
 <h5>{{post.date | date: "%b %d, %Y"}}</h5>
     

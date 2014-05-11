@@ -223,8 +223,8 @@ hr {
     .hero {
         height: 22em;
         
-        #iam {@include padding(6em 1em null 1em);
-            p {font-size: 1.3em;}
+        #iam {@include padding(5em 1em null 1em);
+            p {font-size: golden-ratio(1em, 1);}
         }
     }
 }
@@ -270,5 +270,20 @@ li {
     li {@include inline-block; float: left; margin-right: 8px;}
     li a {color: lighten($grey, 20%);
        &:hover {color: $grey;}
+    }
+}
+
+/* Tag Page ----------------------*/
+
+.tag-title {
+    font-size: 1.5em;
+    padding: 1em;
+    background-color: $light-grey;
+    
+    .tag-icon {
+        background: url(../assets/tag.svg) no-repeat center;
+        background-size: contain;
+        margin-right: 1em;
+        color: rgba(0,0,0,0);
     }
 }
