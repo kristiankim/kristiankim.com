@@ -52,7 +52,12 @@
      
         <footer class="universal">
             <div class="contain"><p class="copyright">&copy; {{ site.date | date: '%Y' }} Kristian Kim. All Rights Reserved</p>
-            <p class="status"><span class="pre">My current status </span>[happy]</p></div>
+                {% for asset in site.pages['home'].assets %}
+                {% if asset.meta.type == 'status' %}
+            <p class="status"><span class="pre">My current status: </span><img src="{{ asset.url }}" alt="{{ asset.caption }}"></p>
+                {% endif %}
+                {% endfor %}
+            </div>
         </footer>
     
     <script src="/js/jquery.js"></script>

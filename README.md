@@ -1,4 +1,4 @@
 kristiankim.com
 ===============
 
-Project nitialized on Apr 19, 2014
+Initialized on Apr 19, 2014

@@ -1,7 +1,6 @@
 @import "bourbon", "neat";
 @import 'font';
 @import 'colors';
-@import 'flex-grid';
 
 /* Mixins ----------------------*/
 
@@ -16,6 +15,12 @@
     max-width: 100%;
 }
 
+@mixin icon {
+    background-size: contain;
+    margin-right: 1em;
+    color: rgba(0,0,0,0);
+}
+
 /* General ----------------------*/
 
 body {
@@ -23,12 +28,6 @@ body {
     font-size: $base-font-size;
     line-height: $base-line-height;
     font-style: normal;
-}
-
-@include media(min-width 320px max-width 480px) {
-    body {
-        font-size: 100%;
-    }
 }
 
 article, header, nav, section {
@@ -46,6 +45,39 @@ a {
         
 }
 
+code {
+    font-family: $code;
+}
+
+pre {
+    font-family: $code;
+    @include padding(1em);
+    background-color: $light-grey;
+    margin-bottom: 1.5em;
+    white-space: pre-wrap;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
+hr {
+    margin-bottom: 3em;
+    border:0;
+    border: 2px solid $light-grey;
+}
+
+.icon {
+    @include icon;
+}
+
 @include reset-display;
 
 $max-width: em(960);
@@ -58,6 +90,7 @@ $max-width: em(960);
 
 h1, h2, h3, h4 {
     font-family: $header;
+    line-height: 1.2em;
 }
 
 h5 {
@@ -70,7 +103,7 @@ h1 {
     font-weight: 700;
     font-style: normal;
     
-    @include media(min-width 320px max-width 480px) {
+    @include media(min-width em(320) max-width em(480)) {
         font-size: golden-ratio(1em, 1);
     }
 }
@@ -78,9 +111,9 @@ h1 {
 h2 {
     font-size: golden-ratio(1em, 1);
     color: $black;
-    @include margin(null null 1em null);
+    @include margin(null null 0.8em null);
     
-    a {color: $grey; line-height: 1.5em; font-weight:700;
+    a {color: $grey; font-weight:700;
      &:hover {color: darken($grey, 20%);}
     }
 }
@@ -89,18 +122,18 @@ h5 {
     font-size: 0.722em;
     text-align: center;
     letter-spacing: 2px;
-    margin-bottom: 1.5em;
+    margin: 1.5em 0;
     text-transform: uppercase;
     color: $grey;
 }
 
 h1.section-title {
-    max-width:7em;
     text-align: center;
     @include margin(null auto);
     font-size: 1.5em;
     padding-bottom: 0.5em;
     border-bottom: 3px solid $blue;
+    display: table;
 }
 
 /* Header ----------------------*/
@@ -108,6 +141,8 @@ h1.section-title {
 header.universal {
     @include container;
     /*background-color: $blue;*/  /* -- Use Meta Color */
+    @include media(min-width em(320) max-width em(480)) {
+        padding-bottom: 0.3em;}
 }
 
 .contain {
@@ -130,32 +165,32 @@ header.universal {
 nav.universal {
     font-family: $header;
     font-size: $base-font-size;
+    font-weight: 700;
     display: inline;
     
     ul {list-style: none; float: right;
-        li {@include inline-block;
-            a {font-family: $header; font-size: 16px; color: lighten($blue, 35%); margin-left:30px; -webkit-font-smoothing: antialiased;
+        li {display: inline-block;
+            a {font-family: $header; font-size: 16px; color: lighten($grey, 35%); margin-left:em(30); -webkit-font-smoothing: antialiased;
               &:hover { color: $white;}
-              &.selected {color: $white;}
+              &.selected {color: $white; border-bottom: 1px solid $white;}
             }
         }
     }
 }
     
-@include media(min-width 320px max-width 480px) {
+@include media(min-width em(320) max-width em(480)) {
     .site-title {display: block;}
     
     .naver {
        .naver-handle {cursor: pointer; display: none; @include prefixer(user-select, none, webkit moz ms o spec);
  	   &:before { background: url(../assets/menu.svg) no-repeat center; content: ''; display: inline-block; float: right; height: 15px; margin-top: 7px; width: 20px; }
     }
- 	  .naver-wrapper { height: auto; }
-      .naver-container {margin-top: 8px;
+ 	  .naver-wrapper { height: auto; @include transition (all 0.3s ease-in-out);}
+      .naver-container {
  	     &:after { clear: both; content: "."; display: block; height: 0; line-height: 0; visibility: hidden;}
       }
-
 	  &.enabled .naver-handle { display:block; }
-	  &.enabled .naver-wrapper { height: 0px; overflow: hidden; clear: both;}
+	  &.enabled .naver-wrapper { height: 0px; overflow: hidden; width:100%;}
     }
     
     nav.universal ul {float: none;
@@ -164,7 +199,6 @@ nav.universal {
         }
      }
 }
-            
 
 /* Article ----------------------*/
 
@@ -174,27 +208,23 @@ article {
     @include margin(3em auto);
     @include padding(null 2em);
     
-    p {@include margin(null null 1.5em null); @include hyphens(manual);}
-    p.view {font-family: $header; font-size: 0.6em; line-height: 1em;}
-    p.view a {color: $orange; text-transform: uppercase; letter-spacing: 1px;}
-
-    img {max-width: 100%; @include margin(0.6em null);}
-    
-    @include media(min-width 320px max-width 480px) {
-        @include padding(null 1em);
+    p {@include margin(null null 1.5em null); @include hyphens(manual);
+      &.intro {font-size: 1.5em; border-top: 1px; border-bottom: 1px; padding: 1.154em; text-align: center; border-style: solid; margin: 1.038em 0;}
+      &.pullquote {padding-left: em(10); border-style: solid; border-color: $blue; border-left-width: 5px; color: $grey; @include margin(1.5em null);}
+      &.caption {font-family: $base-font; font-size: 0.8em; font-style: italic; color: $grey;}
+      &.view {font-family: $header; font-size: 0.6em; line-height: 1em;
+        & a {color: $orange; text-transform: uppercase; letter-spacing: 1px;}
+      }
     }
-}
+    
+    a.backto {display:table; margin-top: 3em;}
 
-p.caption {
-    font-family: $base-font;
-    font-size: 0.8em;
-    font-style: italic;
-    color: $grey;
-}
-
-hr {
-    border: 0;
-    border-bottom: 1px solid $light-grey;
+    img {max-width: 120%; @include margin(0.6em null 0.6em -10%);}
+    
+    @include media(min-width em(320) max-width em(480)) {
+        @include padding(null 1em);
+        p.intro {font-size: 1.2em; padding: 1em;}
+    }
 }
 
 /* Hero ----------------------*/
@@ -205,72 +235,63 @@ hr {
     background-size: cover;
     background-position: center;
     margin-bottom: 3em;
+    position: relative;
     
     #iam {
-    @include outer-container;
+    max-width: em(680);
+    @include margin(null auto);
     @include clearfix;
     @include padding(10em 1em null 1em);
 
     p {
     font-size: 1.889em;
-    color: $black;
+    color: $white;
     line-height: 1.5;
-    text-align: center;}
+    text-align: center;
     }
+  }
 }
 
-@include media(min-width 320px max-width 480px) {
+@include media(min-width em(320) max-width em(480)) {
     .hero {
         height: 22em;
         
-        #iam {@include padding(5em 1em null 1em);
-            p {font-size: golden-ratio(1em, 1);}
+        #iam {@include padding(3em 1em null 1em);
+            p {font-size: 1.5em; text-align: left;}
         }
     }
 }
 
+/* Work ----------------------*/
 
-/* Footer ----------------------*/
-
-footer.universal {
-    @include container;
-    background-color: $light-grey;
+.fbanner {
+    height: em(300);
+    @include fullwidth;
+    margin-bottom: -2em;
     
-    p {font-family: $header; color: $grey; font-size: 14px; padding-top: 8px;}
-    p.copyright {float: left; display: inline; width:20em;}
-    p.status {float: right; text-align: right; display:inline; width:14.7222223em;}
-    
-    @include media(min-width 320px max-width 480px) {
-        height: 7em;
-        p {
-            padding-top:0;
-            &.copyright, &.status {float: none; text-align: center; display: block; width: 100%; @include padding(6px null);}
-            &.status .pre {display: none;}        
-        }
+    p {text-indent: -9999px;
     }
 }
 
 /* Tags List ----------------------*/
 
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-li {
-    margin: 0;
-    padding: 0;
-}
-
 .list_horizontal {
     overflow: hidden;
     @include margin(1em null);
     
-    li {@include inline-block; float: left; margin-right: 8px;}
+    li {display: inline-block; float: left; margin-right: 1em;}
     li a {color: lighten($grey, 20%);
        &:hover {color: $grey;}
     }
+}
+
+.tags {
+    @extend .list_horizontal;
+    border-top: 2px solid $light-grey;
+    border-bottom: 2px solid $light-grey;
+    display: block;
+    padding: 1em 0;
+    margin-top: 3em;
 }
 
 /* Tag Page ----------------------*/
@@ -280,10 +301,56 @@ li {
     padding: 1em;
     background-color: $light-grey;
     
-    .tag-icon {
+    .tag{
         background: url(../assets/tag.svg) no-repeat center;
-        background-size: contain;
-        margin-right: 1em;
-        color: rgba(0,0,0,0);
+    }
+}
+
+/* Bottom Post Navigation ----------------------*/
+
+footer.section {
+    display: block;
+    background-color: $grey;
+    ul.post_nav {
+        li {width: 50%; margin-right:0; font-size: 0.8em; padding: 1em; 
+        &.previous { float:left; text-align: left;}
+        &.next {float: right; text-align: right;}
+        & a {color:$white;
+            &.right:hover { padding-right: 5px; @include transition (all 0.2s ease-in-out);}
+            &.left:hover { padding-left: 5px; @include transition (all 0.2s ease-in-out);}
+        }
+        & a.altnav {display: none;}
+            
+            @include media(min-width em(320) max-width em(480)) {
+            & a.mainnav {display: none;}
+            & a.altnav {display: inline;}
+            }
+        }        
+    }
+}
+    
+
+/* Footer ----------------------*/
+
+footer.universal {
+    @include container;
+    background-color: $light-grey;
+    
+    p {font-family: $header; color: $grey; font-size: 14px; padding-top: 8px;}
+    p.copyright {float: left; display: inline; width:20em;}
+    p.status {float: right; text-align: right; display:inline; width:14.7222223em;
+     img { vertical-align: middle; margin-left: 8px;}
+    }
+    
+    @include media(min-width em(320) max-width em(480)) {
+        height: 7em;
+        p {
+            padding-top:0;
+            &.copyright, &.status {float: none; text-align: center; display: block; width: 100%; @include padding(6px null);}
+            &.status { 
+                .pre {display: none;} 
+                img {margin-left: 0;}
+            }
+        }
     }
 }

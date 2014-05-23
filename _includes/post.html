@@ -19,18 +19,6 @@
 <h1>{{ title }}</h1>
 <h5>{{post.date | date: "%b %d, %Y"}}</h5>
     
-    {% for asset in assets %}
-    {% if asset.meta.type == 'mainimage' %}
-    <img src="{{asset.url}}"><p class="caption">{{asset.meta.caption}}</p>
-    {% elsif asset.type == 'audio' %}
-    <audio><source src="{{asset.url}}" type="{{asset.content_type}}"></audio><p class="caption">{{asset.meta.caption}}</p>
-    {% elsif asset.type == 'video' %}
-    <video><source src="{{asset.url}}" type="{{asset.content_type}}"></video><p class="caption">{{asset.meta.caption}}</p>
-    {% elsif asset.type == 'other' %}
-    <a href="{{asset.url}}">Download {{asset.filename}}</a></li>
-    {% endif %}
-    {% endfor %}
-
 {{ body }}
 
 <ul class="tags list_horizontal">
@@ -40,6 +28,19 @@
 </ul>
     
 {% if parent %}
-  <a class="backto" href="{{parent.url}}">&larr; Back to {{parent.title}}</a>
+  <footer class="section">
+    <ul class="list_horizontal post_nav">
+      {% if previous %}
+        <li class="previous"><a href="{{post.previous.url}}" class="altnav left">&larr; previous</a><a href="{{post.previous.url}}" class="mainnav left">&larr; {{post.previous.title}}</a></li>
+      {% endif %}
+      {% if next %}
+        <li class="next"><a href="{{post.next.url}}" class="altnav right">next &rarr;</a><a href="{{post.next.url}}" class="mainnav right">{{post.next.title}} &rarr;</a></li>
+      {% endif %}
+    </ul>
+  </footer>
+{% endif %}
+    
+{% if parent %}
+  <a class="backto" href="{{parent.url}}">Back to {{parent.title}}</a>
 {% endif %}
 </article>
