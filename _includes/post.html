@@ -21,11 +21,24 @@
     
 {{ body }}
 
+{% if parent.slug == "journal" %}
 <ul class="tags list_horizontal">
-{% for tag in taxonomy['tags'] %}
+    <li class="list-title">Tags:</li>
+    {% for tag in taxonomy['tags'] %}
   <li><a href="{{tag.url}}">{{tag.value}}</a></li>
-{% endfor %}
+    {% endfor %}
 </ul>
+{% endif %}
+
+{% if parent.slug == "work" %}
+<ul class="tags list_horizontal">
+    <li class="list-title">Role:</li>
+    {% for tag in taxonomy['role'] %}
+   <li><a href="{{tag.url}}">{{tag.value}}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+
     
 {% if parent %}
   <footer class="section">

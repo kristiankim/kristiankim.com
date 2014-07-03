@@ -11,7 +11,7 @@
 
 <section class="contain">
 <h1 class="section-title">Latest Work</h1>
-{% for post in site.pages['work'].posts limit:2 %}
+{% for post in site.pages['work'].posts limit:5 %}
 <article>
    {% for asset in post.assets %}{% if asset.meta.type == 'hero' %}<img src="{{asset.url}}" alt="{{asset.meta.caption}}">{% endif %}{% endfor %}
    <h2><a href="{{post.url}}">{{post.title}}</a></h2>
@@ -21,7 +21,7 @@
 {% endfor %}
 <hr>
 <h1 class="section-title">Latest Journal</h1>
-{% for post in site.pages['journal'].posts limit:2 %}
+{% for post in site.pages['journal'].posts limit:5 %}
 <article>
     {% for asset in posts.assets %}{% endfor %}
     <h2><a href="{{post.url}}">{{post.title}}</a></h2>

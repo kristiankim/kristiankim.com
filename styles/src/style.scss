@@ -219,7 +219,11 @@ article {
     
     a.backto {display:table; margin-top: 3em;}
 
-    img {max-width: 120%; @include margin(0.6em null 0.6em -10%);}
+    img {max-width: 100%; margin:0;}
+    
+    @include media(min-width em(1024)) {
+        img {max-width: 120%; @include margin(0.6em null 0.6em -10%);}
+    }
     
     @include media(min-width em(320) max-width em(480)) {
         @include padding(null 1em);
