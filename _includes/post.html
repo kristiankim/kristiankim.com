@@ -16,44 +16,13 @@
 
 <article>
     
-<h1>{{ title }}</h1>
-<h5>{{post.date | date: "%b %d, %Y"}}</h5>
+    <h1>{{ title }}</h1>
+    <h5>{{post.date | date: "%b %d, %Y"}}</h5>
     
-{{ body }}
+    {{ body }}
 
-{% if parent.slug == "journal" %}
-<ul class="tags list_horizontal">
-    <li class="list-title">Tags:</li>
-    {% for tag in taxonomy['tags'] %}
-  <li><a href="{{tag.url}}">{{tag.value}}</a></li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-{% if parent.slug == "work" %}
-<ul class="tags list_horizontal">
-    <li class="list-title">Role:</li>
-    {% for tag in taxonomy['role'] %}
-   <li><a href="{{tag.url}}">{{tag.value}}</a></li>
-    {% endfor %}
-</ul>
-{% endif %}
-
+    {% include 'includes/tags' %}
+    {% include 'includes/post-footer' %}
     
-{% if parent %}
-  <footer class="section">
-    <ul class="list_horizontal post_nav">
-      {% if previous %}
-        <li class="previous"><a href="{{post.previous.url}}" class="altnav left">&larr; previous</a><a href="{{post.previous.url}}" class="mainnav left">&larr; {{post.previous.title}}</a></li>
-      {% endif %}
-      {% if next %}
-        <li class="next"><a href="{{post.next.url}}" class="altnav right">next &rarr;</a><a href="{{post.next.url}}" class="mainnav right">{{post.next.title}} &rarr;</a></li>
-      {% endif %}
-    </ul>
-  </footer>
-{% endif %}
-    
-{% if parent %}
-  <a class="backto" href="{{parent.url}}">Back to {{parent.title}}</a>
-{% endif %}
+
 </article>
