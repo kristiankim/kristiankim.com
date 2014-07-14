@@ -111,7 +111,8 @@ h1 {
 h2 {
     font-size: golden-ratio(1em, 1);
     color: $black;
-    @include margin(null null 0.8em null);
+    font-weight: 700;
+    @include margin(1em null 0.8em null);
     
     a {color: $grey; font-weight:700;
      &:hover {color: darken($grey, 20%);}
@@ -122,7 +123,7 @@ h5 {
     font-size: 0.722em;
     text-align: center;
     letter-spacing: 2px;
-    margin: 1.5em 0;
+    margin: 1.5em 0 3em;
     text-transform: uppercase;
     color: $grey;
 }
@@ -216,8 +217,12 @@ article {
         & a {color: $orange; text-transform: uppercase; letter-spacing: 1px;}
       }
     }
+    ol { list-style-type: decimal; @include margin(null null 1.5em 1em);
+        li { text-align: -webkit-match-parent;}
+    }
     
-    a.backto {display:table; margin-top: 3em;}
+    .disclaimer { font-style: italic; font-size: 90%; color: $grey; margin-bottom: 2em;}
+    em { font-style: italic;}
 
     img {max-width: 100%; margin:0;}
     
@@ -314,8 +319,8 @@ article {
 
 footer.section {
     display: block;
-    background-color: $grey;
     ul.post_nav {
+        background-color: $grey;
         li {width: 50%; margin-right:0; font-size: 0.8em; padding: 1em; 
         &.previous { float:left; text-align: left;}
         &.next {float: right; text-align: right;}
@@ -331,6 +336,8 @@ footer.section {
             }
         }        
     }
+    .backto {display:inline; float:right; margin-top: 3em;}
+    .article-twitter {float: left; display: block; margin-top: 3em;}
 }
     
 

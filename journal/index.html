@@ -1,8 +1,7 @@
 {% capture content %}
 {% for post in posts limit:20 %}
 <article>
-  <h1>{{post.title}}</h1>
-  <h5>{{post.date | date: "%b %d, %Y"}}</h5>
+  <h2><a href="{{post.url}}">{{post.title}}</a></h2>
     
   {% for asset in post.assets %}
   {% if asset.meta.type == 'hero' %}
@@ -14,13 +13,8 @@
   {% endif %}
   {% endfor %}
 
-  <p>{{post.body}}</p>
-  <ul class="tags list_horizontal">
-    <li class="list-title">Tags:</li>
-    {% for tag in taxonomy['tags'] %}
-  <li><a href="{{tag.url}}">{{tag.value}}</a></li>
-    {% endfor %}
-</ul>
+  <p>{{post.meta.excerpt}}</p>
+  <p class="view"><a href="{{post.url}}">View post</a>
 </article>
 {% endfor %}
 {% endcapture %}

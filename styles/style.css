@@ -84,6 +84,8 @@ h1 {
 h2 {
   font-size: 1.618em;
   color: #222222;
+  font-weight: 700;
+  margin-top: 1em;
   margin-bottom: 0.8em; }
   h2 a {
     color: #9b9b9b;
@@ -95,7 +97,7 @@ h5 {
   font-size: 0.722em;
   text-align: center;
   letter-spacing: 2px;
-  margin: 1.5em 0;
+  margin: 1.5em 0 3em;
   text-transform: uppercase;
   color: #9b9b9b; }
 
@@ -255,9 +257,19 @@ article {
         color: #ff8900;
         text-transform: uppercase;
         letter-spacing: 1px; }
-  article a.backto {
-    display: table;
-    margin-top: 3em; }
+  article ol {
+    list-style-type: decimal;
+    margin-bottom: 1.5em;
+    margin-left: 1em; }
+    article ol li {
+      text-align: -webkit-match-parent; }
+  article .disclaimer {
+    font-style: italic;
+    font-size: 90%;
+    color: #9b9b9b;
+    margin-bottom: 2em; }
+  article em {
+    font-style: italic; }
   article img {
     max-width: 100%;
     margin: 0; }
@@ -350,38 +362,47 @@ article {
 
 /* Bottom Post Navigation ----------------------*/
 footer.section {
-  display: block;
-  background-color: #9b9b9b; }
-  footer.section ul.post_nav li {
-    width: 50%;
-    margin-right: 0;
-    font-size: 0.8em;
-    padding: 1em; }
-    footer.section ul.post_nav li.previous {
-      float: left;
-      text-align: left; }
-    footer.section ul.post_nav li.next {
-      float: right;
-      text-align: right; }
-    footer.section ul.post_nav li a {
-      color: white; }
-      footer.section ul.post_nav li a.right:hover {
-        padding-right: 5px;
-        -webkit-transition: all 0.2s ease-in-out;
-        -moz-transition: all 0.2s ease-in-out;
-        transition: all 0.2s ease-in-out; }
-      footer.section ul.post_nav li a.left:hover {
-        padding-left: 5px;
-        -webkit-transition: all 0.2s ease-in-out;
-        -moz-transition: all 0.2s ease-in-out;
-        transition: all 0.2s ease-in-out; }
-    footer.section ul.post_nav li a.altnav {
-      display: none; }
-    @media screen and (min-width: 20em) and (max-width: 30em) {
-      footer.section ul.post_nav li a.mainnav {
-        display: none; }
+  display: block; }
+  footer.section ul.post_nav {
+    background-color: #9b9b9b; }
+    footer.section ul.post_nav li {
+      width: 50%;
+      margin-right: 0;
+      font-size: 0.8em;
+      padding: 1em; }
+      footer.section ul.post_nav li.previous {
+        float: left;
+        text-align: left; }
+      footer.section ul.post_nav li.next {
+        float: right;
+        text-align: right; }
+      footer.section ul.post_nav li a {
+        color: white; }
+        footer.section ul.post_nav li a.right:hover {
+          padding-right: 5px;
+          -webkit-transition: all 0.2s ease-in-out;
+          -moz-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out; }
+        footer.section ul.post_nav li a.left:hover {
+          padding-left: 5px;
+          -webkit-transition: all 0.2s ease-in-out;
+          -moz-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out; }
       footer.section ul.post_nav li a.altnav {
-        display: inline; } }
+        display: none; }
+      @media screen and (min-width: 20em) and (max-width: 30em) {
+        footer.section ul.post_nav li a.mainnav {
+          display: none; }
+        footer.section ul.post_nav li a.altnav {
+          display: inline; } }
+  footer.section .backto {
+    display: inline;
+    float: right;
+    margin-top: 3em; }
+  footer.section .article-twitter {
+    float: left;
+    display: block;
+    margin-top: 3em; }
 
 /* Footer ----------------------*/
 footer.universal {
