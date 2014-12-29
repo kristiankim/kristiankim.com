@@ -1,0 +1,29 @@
+.footer {
+  $footer-background: $light-gray;
+  $footer-color: $dark-gray;
+    
+  background: $footer-background;
+  padding: $base-spacing;
+  width: 100%;
+    
+  .footer-inner {
+      @include outer-container;
+      .footer-lt {
+          @include span-columns(6);
+          p { color: $footer-color; float: left; display: inline; margin-bottom:0;}
+      }
+      .footer-rt {
+          @include span-columns(6);
+          .contact {
+              float: right;
+          p {
+              color: $footer-color;
+              display: inline;
+              img { height: 1.6em; vertical-align: middle; margin-left: 8px; opacity: 0.4; @include transition (all 0.3s ease-in-out); }
+              img:hover {opacity: 1.0; filter: alpha(opacity=100); @include transition (all 0.3s ease-in-out); }
+          }
+        }
+      }
+   }
+}
+

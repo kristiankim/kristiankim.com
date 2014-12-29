@@ -1,16 +1,32 @@
 {% capture content %}
-{% for post in posts limit:5 %}
-{% for asset in post.assets %}
-{% if asset.meta.type == 'hero' %}
-<div class="fbanner fullwidth" style="background-image: url({{asset.url}}); background-size: cover; background-position: center;"><p>{{asset.meta.caption}}</p></div>
-{% endif %}
-{% endfor %}
-<article>
-  <h2><a href="{{post.url}}">{{post.title}}</a></h2>
-    {{post.body | truncatewords: 50}}
-  <p class="view"><a href="{{post.url}}">View work</a>
-</article>
-{% endfor %}
+<section class="work">
+	{{ body }}
+	<ul class="grid cs-style-1">
+	{% for post in posts limit:10 %}
+		<li>
+			<figure>
+				{% for asset in post.assets %}
+				{% if asset.meta.type == 'thumb' %}
+  					<img src="{{asset.url}}" alt="work 01">
+				{% endif %}
+				{% endfor %}
+				<figcaption>
+    				<h3>{{post.title}}</h3>
+    				{% for asset in post.assets %}
+					{% if asset.meta.caption %}
+    				<span>{{asset.meta.caption}}</span>
+    				{% endif %}
+    				{% endfor %}
+    				<!--<a href="{{post.url}}">Take a look</a>-->
+    				<form action="{{post.url}}" method="get">
+    					<button class="btn">Take a look</button>
+    				</form>
+    			</figcaption>
+    		</figure>
+        </li>
+	{% endfor %}
+	</ul>
+</section>
 {% endcapture %}
 
 {% include 'layouts/default' %}

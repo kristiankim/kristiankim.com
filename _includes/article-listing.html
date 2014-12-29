@@ -1,11 +1,14 @@
-<article class='article-listing{% if article == posts.first %} latest{% endif %}'>
-  <hgroup class='content-header'>
-    <h2><a href='{{ article.url }}'>{{ article.title }}</a></h2>
-  </hgroup>
+
+	<article class='article-listing{% if article == posts.first %} latest{% endif %}'>
+		<div class="inner-container">
+    		<h2><a href='{{ article.url }}'>{{ article.title }}</a></h2>
     
-    {{article.body | truncatewords: 50}}
+    			{{article.body | truncatewords: 50}}
     
-    <p class="view">
-      <a href='{{ article.url }}'>Read&nbsp;more</a>
-    </p>
-</article>
+    		<div class="sm-link">
+      			<a href='{{ article.url }}'>Read&nbsp;more</a>
+    		</div>
+    		<hr>
+    	</div>
+	</article>
+

@@ -1,0 +1,52 @@
+section {
+      @include outer-container;
+  article {
+    .inner-container { width:94%; margin: auto;
+     @include media($large-screen) {
+          width:65%;
+          margin: auto;}
+
+          p, ol, ul {
+        font-size: $base-font-size * 1.15;
+        line-height: $base-line-height * 1.15;
+
+        a {
+            outline: 0;
+            border-bottom: 1px solid $base-link-color;
+        }
+
+        a:hover {
+            border-bottom: 0;
+        }
+
+    }
+
+    ol {
+      list-style: decimal;
+      margin-bottom: 1em;
+    }
+
+    blockquote {
+      font-size: $base-font-size * 1.5;
+      color: $medium-gray;
+    }
+
+    .disclaimer {
+      font-size: 1em;
+      font-style: italic;
+      margin-bottom: 1em;
+      color: $medium-gray;
+    }
+     }
+  }
+         .sm-link {
+         font-family: $sans-serif;
+         text-transform: uppercase;
+         font-size: 11px;
+         font-weight: bold;}
+}
+
+video {
+  max-width: 100%;
+  @include margin(0.6em null);
+}

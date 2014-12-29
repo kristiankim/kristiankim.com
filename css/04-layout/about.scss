@@ -1,0 +1,28 @@
+.about {
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+    p {
+        margin-bottom: 1.25em !important;
+    }
+    .social {
+    	ul {
+    		list-style: none;
+    		margin-top: 1em;
+    		li {
+    			float: left;
+    			margin-right: 1em;
+
+    			& a {
+    				border-bottom: 0;
+    				opacity: 0.2;
+
+    				&:hover {
+    					opacity: 1;
+    					@include transition(all 0.2s ease-in-out);
+    				}
+    			}
+    		}
+    	}
+    }
+}

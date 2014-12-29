@@ -14,57 +14,71 @@
   <meta property="twitter:account_id" content="{{ site.meta.twitter }}">
   <title>{{site.title}} | {{title}}</title>
   <link rel="alternate" type="application/rss+xml" href="{{site.feed_url}}" />
-    
-  <!-- // CSS Reset – http://meyerweb.com/eric/tools/css/reset/ -->
-  <link rel="stylesheet" type="text/css" href="/styles/reset.css" media="all">
-  <link rel="stylesheet" type="text/css" href="/styles/style.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/style.css" media="all">
   <style>
-    ::selection {background-color: {{ meta.color | fallback: '#19B9FF' }}; color: #fff;}
+    ::selection { background-color: {{meta.color | fallback: '#19B9FF'}}; color: #fff;}
   </style>
-  {% include 'includes/typekit' %}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
+  {% include 'includes/analytics' %}
+  {% include 'includes/typekit' %}
 </head>
-    
+
 <body>
-      <header role="banner" class="universal" role="banner" style="background-color: {{ meta.color | fallback: '#19B9FF' }};">
-           <div class="wrapper">
-           <div class="contain">
-             <div class="site-title"><a href="/">{{site.title}}</a></div>
-      
-              <nav class="universal" id="menu">
-                  <ul>
+    <!-- Navigation : Global -->
+    <header role="banner" class="navigation" role="banner" style="background-color: {{ meta.color | fallback: '#19B9FF' }};">
+        <div class="navigation-wrapper">
+             <div class="logo"><a href="/">{{site.title}}</a></div>
+             <!-- Mobile view -->
+              <a href="" class="navigation-menu-button" id="js-mobile-menu">menu</a>
+              <nav class="nav">
+                  <ul id="navigation-menu">
                   {% for page in site.pages %}  
                     {% unless page.url == "/" %}
-                  <li><a href="{{page.url}}"{% if page.url == url %} class="selected"{% endif %}>{{page.title}}</a></li>
+                  <li class="nav-link"><a href="{{page.url}}"{% if page.url == url %} class="selected"{% endif %}>{{page.title}}</a></li>
                     {% endunless %}
                   {% endfor %}
+                  <li class="nav-link"><a href="http://kristian.vsco.co">Photos</a></li>
                   </ul>
                </nav>
-            </div>
          </div>
-        </header>
-        
-        <main class="main-content">
-           <div class="wrapper">
-               {{ content }}
-            </div>
-        </main>
-     
-        <footer class="universal">
-            <div class="contain"><p class="copyright">&copy; {{ site.date | date: '%Y' }} Kristian Kim. All Rights Reserved</p>
+    </header>
+    <!-- // End Navigation -->
+    
+    {{ content }}
+    
+
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-lt">
+            <p>&copy; {{ site.date | date: '%Y' }} Kristian Kim.</p>
+        </div>
                 {% for asset in site.pages['home'].assets %}
-                {% if asset.meta.type == 'status' %}
-            <p class="status"><span class="pre">My current status: </span><img src="{{ asset.url }}" alt="{{ asset.caption }}"></p>
+                {% if asset.meta.type == 'email' %}
+            <div class="footer-rt">
+                <div class="contact">
+                <p><span class="pre">Say hello! </span><a href="mailto:{{ site.meta.email }}"><img src="{{ asset.url }}" alt="{{ asset.caption }}"></a></p>
+                </div>
                 {% endif %}
                 {% endfor %}
             </div>
-        </footer>
-    
-    <script src="/js/jquery.js"></script>
-    {% include 'includes/fitvids' %}
-    {% include 'includes/naver' %}
-    
-    
+    </div>
+</footer>
+
+<script>
+$(document).ready(function() {
+  $('#navigation-menu').removeClass("show");
+
+  $('#js-mobile-menu').on('click', function(e) {
+    e.preventDefault();
+    $('#navigation-menu').slideToggle(function(){
+      if($('#navigation-menu').is(':hidden')) {
+        $('#navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+</script>
+{% include 'includes/fitvids' %}
 </body>
-    
 </html>

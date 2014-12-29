@@ -1,0 +1,92 @@
+.work {
+  @include outer-container;
+  margin-bottom: 2em;
+  h2 {
+    font-size: 2em;
+    font-family: $base-font-family;
+    font-weight: 300;
+    color: $medium-gray;
+    margin: 2em 0;
+    padding: 0 20px;
+  }
+  .grid {
+    margin: 0 auto;
+    list-style: none;
+    text-align: center;
+    
+      li {
+      @include span-columns(12);
+      margin: 0;
+      text-align: left;
+
+      @include media($large-screen) {
+        @include span-columns(6);
+        position: relative;
+        padding: 20px;
+        margin: 0;
+      }
+    }
+
+      figure {
+        margin: 0;
+        position: relative;
+
+        img {
+          max-width: 100%;
+          display: block;
+          position: relative;
+        }
+      }
+
+      figcaption {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 20px;
+        background: #2c3f52;
+        color: #ed4e6e;
+
+        h3 {
+          margin: 0;
+          padding: 0;
+          color: #fff;
+        }
+      }
+  }
+
+  .cs-style-1 {
+    figcaption {
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      text-align: center;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+      -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+      transition: transform 0.3s, opacity 0.3s;
+
+      h3 {
+        margin-top: 70px;
+      }
+
+      span {
+        display: block;
+      }
+    }
+
+    figure:hover figcaption,
+    figure.cs-hover figcaption {
+    opacity: 1;
+
+      @include media($large-screen) {
+        -webkit-transform: translate(15px, 15px);
+        -moz-transform: translate(15px, 15px);
+        -ms-transform: translate(15px, 15px);
+        transform: translate(15px, 15px);
+      }
+    }
+  }
+}
+

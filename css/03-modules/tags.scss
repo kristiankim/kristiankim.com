@@ -1,0 +1,31 @@
+.tags {
+	@include clearfix;
+	display: table;
+	margin: 2em auto 2em;
+	border:1px solid $light-gray;
+	padding: 0.75em;
+	font-family: $header-font-family;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+ul.list_horizontal {
+
+	li {
+		float: left;
+		margin-left: 8px;
+
+		a {
+			color: $light-gray;
+			&:hover {
+				color: $medium-gray;
+			}
+		}
+	}
+
+	li:first-child {
+		margin-left: 0;
+		color: $medium-gray;
+	}
+}

@@ -1,0 +1,36 @@
+button,
+input[type="submit"] {
+  @extend %button;
+  @include appearance(none);
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.btn {
+    /* General button style (reset) */
+    font-family: $header-font-family;
+    margin-top: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px darken($base-button-color, 10%);
+    position: relative;
+
+    &:after {
+    	content: '';
+        position: absolute;
+        z-index: -1;
+    }
+
+    &:hover {
+        box-shadow: 0 2px darken($base-button-color, 10%);
+        top: 2px;	
+    }
+
+    &:active {
+    	box-shadow: 0 0 darken($base-button-color, 10%);
+        top: 4px;
+    }
+}

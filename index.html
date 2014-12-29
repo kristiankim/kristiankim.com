@@ -1,32 +1,41 @@
 {% capture content %}
+
     {% for asset in assets %}
     {% if asset.meta.type == 'main' %}
-<section class="hero main" style="background-image: url({{asset.url}});">
+    <div class="hero">
+	     <div class="hero-inner">
+		      <div class="hero-copy">
+              {{ body }}
+		      </div>
+	     </div>
+    </div>
     {% endif %}
     {% endfor %}
-<div id="iam">
-{{ body }}
-</div>
-</section>
 
-<section class="contain">
-<h1 class="section-title">Latest Work</h1>
+<section class="home">
+<h5 class="s-title">Latest Work</h5>
 {% for post in site.pages['work'].posts limit:5 %}
 <article>
+   <div class="inner-container">
    {% for asset in post.assets %}{% if asset.meta.type == 'hero' %}<img src="{{asset.url}}" alt="{{asset.meta.caption}}">{% endif %}{% endfor %}
    <h2><a href="{{post.url}}">{{post.title}}</a></h2>
-   {{post.body | truncatewords: 50}}
-   <p class="view"><a href="{{post.url}}">View work</a>
+   <p>{{post.body | truncatewords: 50}}</p>
+       <span class="sm-link"><a href="{{post.url}}">View work</a></span>
+    <hr>
+   </div>
 </article>
 {% endfor %}
-<hr>
-<h1 class="section-title">Latest Journal</h1>
+    
+<h5 class="s-title">Latest Journal</h5>
 {% for post in site.pages['journal'].posts limit:5 %}
 <article>
+    <div class="inner-container">
     {% for asset in posts.assets %}{% endfor %}
     <h2><a href="{{post.url}}">{{post.title}}</a></h2>
-    <p>{{post.meta.excerpt}}</p>
-    <p class="view"><a href="{{post.url}}">View Article</a></p>
+    <p>{{post.body | truncatewords: 50}}</p>
+    <span class="sm-link"><a href="/journal">View Article</a></span>
+    <hr>
+    </div>
 </article>
 {% endfor %}
 </section>
